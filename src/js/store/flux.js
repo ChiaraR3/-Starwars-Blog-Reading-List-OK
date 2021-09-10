@@ -1,18 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			favorites: ["name"],
+			urls: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -37,6 +27,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			addFav: name => {
+				setStore({ favorites: [...getStore().favorites, name] });
+			},
+			addUrl: url => {
+				setStore({ urls: [...getStore().urls, url] });
+			},
+			deleteFavorite: name => {
+				let store = getStore();
+				let index = store.favorites.indexOf(name);
+
+				const arr = store.favorites.filter(function(item) {
+					return item !== name;
+				});
+				setStore({ favorites: arr });
 			}
 		}
 	};
