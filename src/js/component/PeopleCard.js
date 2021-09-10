@@ -21,7 +21,7 @@ const PeopleCard = () => {
 	return (
 		<div className="container">
 			<h1>PEOPLE</h1>
-			<div className=" row">
+			<div className="row flex-nowrap ">
 				{people.map(person => {
 					console.log(person);
 					return (
