@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 const PeopleCard = () => {
 	const [people, setPeople] = useState([]);
@@ -39,7 +40,14 @@ const PeopleCard = () => {
 									}}>
 									FAV
 								</button>
-								<button>MORE</button>
+								<Link to="/demo">
+									<button
+										onClick={() => {
+											actions.addUrl(person.url);
+										}}>
+										MORE
+									</button>
+								</Link>
 								<p className="card-text">
 									<small className="text-muted">Last updated 3 mins ago</small>
 								</p>
