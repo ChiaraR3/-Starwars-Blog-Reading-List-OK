@@ -43,7 +43,7 @@ const PeopleCard = () => {
 								<Link to="/demo">
 									<button
 										onClick={() => {
-											actions.addUrl(person.url);
+											actions.addDetails(person.url);
 										}}>
 										MORE
 									</button>
