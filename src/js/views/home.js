@@ -1,5 +1,13 @@
 import React from "react";
 import PeopleCard from "../component/PeopleCard.js";
 import "../../styles/home.scss";
+import PlanetCard from "../component/PlanetCard.js";
 
-export const Home = () => <PeopleCard />;
+const Home = () => {
+	return (
+		<div className="container">
+			<PeopleCard />,<PlanetCard />
+		</div>
+	);
+};
+export default Home;

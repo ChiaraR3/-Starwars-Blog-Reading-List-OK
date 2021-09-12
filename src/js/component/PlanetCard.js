@@ -2,35 +2,33 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
-const PeopleCard = () => {
-	const [people, setPeople] = useState([]);
+const PlanetCard = () => {
+	const [planets, setPlanets] = useState([]);
 	const { store, actions } = useContext(Context);
-	const [characterExist, setCharacterExist] = useState(false);
 
-	async function getPerson() {
-		const response = await fetch("https://www.swapi.tech/api/people");
+	async function getPlanet() {
+		const response = await fetch("https://www.swapi.tech/api/planets");
 
 		const responseJson = await response.json();
-		setPeople(responseJson.results);
+		setPlanets(responseJson.results);
 	}
 	useEffect(() => {
-		getPerson();
+		getPlanet();
 	}, []);
 
 	return (
 		<div className="container">
-			<h1>PEOPLE</h1>
+			<h1>PLANETS</h1>
 			<div className="row flex-nowrap ">
-				{people.map(person => {
-					console.log(person);
+				{planets.map(planet => {
 					return (
-						<div className="card col-3 m-4" key={person.uid}>
+						<div className="card col-3 m-4" key={planet.uid}>
 							<img
 								className="card-img-top"
-								src="https://starwarsblog.starwars.com/wp-content/uploads/2021/03/leia-acme-archives-christophe-vacher-tall.jpg"
+								src="https://starwarsblog.starwars.com/wp-content/uploads/2018/10/mustafar-tall.jpg"
 								alt="Card image cap"
 							/>
-							<h5>{person.name}</h5>
+							<h5>{planet.name}</h5>
 							<div className="card-body">
 								<p className="card-text">
 									This is a longer card with supporting text below as a natural lead-in to additional
@@ -38,16 +36,16 @@ const PeopleCard = () => {
 								</p>
 								<button
 									onClick={() => {
-										actions.addFav(person.name);
+										actions.addFav(planet.name);
 									}}>
 									FAV
 								</button>
 								<Link to="/demo">
 									<button
 										onClick={() => {
-											actions.addDetails(person.url);
+											actions.addDetails(planet.url);
 										}}>
-										MORE
+										LEARN MORE
 									</button>
 								</Link>
 								<p className="card-text">
@@ -61,4 +59,4 @@ const PeopleCard = () => {
 		</div>
 	);
 };
-export default PeopleCard;
+export default PlanetCard;

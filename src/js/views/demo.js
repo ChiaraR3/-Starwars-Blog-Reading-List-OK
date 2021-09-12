@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 
@@ -8,16 +8,11 @@ import "../../styles/demo.scss";
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
 	const [detail, setDetail] = useState([]);
-	const params = useParams();
 
 	async function getDetails() {
 		const response = await fetch(store.details);
-		console.log(store.details, "HOLA");
-
 		const responseJson = await response.json();
-		console.log(responseJson, "aaaa");
 		setDetail(responseJson.result.properties);
-		console.log(responseJson.result.properties, "AAA");
 	}
 	useEffect(() => {
 		getDetails();
