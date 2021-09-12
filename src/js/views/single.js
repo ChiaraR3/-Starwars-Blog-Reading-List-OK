@@ -1,26 +1,42 @@
 import React, { useState, useEffect, useContext } from "react";
-import PropTypes from "prop-types";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 import { Context } from "../store/appContext";
 
-export const Single = props => {
+import "../../styles/demo.scss";
+
+export const Single = () => {
 	const { store, actions } = useContext(Context);
-	const params = useParams();
+	const [detail, setDetail] = useState([]);
+
+	async function getDetails() {
+		const response = await fetch(store.details);
+		const responseJson = await response.json();
+		setDetail(responseJson.result.properties);
+	}
+	useEffect(() => {
+		getDetails();
+	}, []);
 	return (
-		<div className="jumbotron">
-			<h1 className="display-4">This will show the demo element: {store.demo[params.theid].title}</h1>
-
-			<hr className="my-4" />
-
+		<div className="container">
+			<ul className="list-group planet">
+				<p> NAME: {detail.name}</p>
+				<p> POPULATION: {detail.population}</p>
+				<p> CLIMATE: {detail.climate}</p>
+				<p> DIAMETER: {detail.diameter}</p>
+				<p> TERRAIN: {detail.terrain}</p>
+				<p> SURFACE WATER: {detail.surface_water}</p>
+			</ul>
+			<br />
 			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
+				<button
+					className="btn btn-primary"
+					onClick={() => {
+						actions.deleteDetails(detail);
+					}}>
 					Back home
-				</span>
+				</button>
 			</Link>
 		</div>
 	);
-};
-
-Single.propTypes = {
-	match: PropTypes.object
 };

@@ -40,7 +40,7 @@ const PlanetCard = () => {
 									}}>
 									FAV
 								</button>
-								<Link to="/demo">
+								<Link to="/single">
 									<button
 										onClick={() => {
 											actions.addDetails(planet.url);

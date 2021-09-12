@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const PeopleCard = () => {
 	const [people, setPeople] = useState([]);
 	const { store, actions } = useContext(Context);
-	const [characterExist, setCharacterExist] = useState(false);
 
 	async function getPerson() {
 		const response = await fetch("https://www.swapi.tech/api/people");
@@ -22,7 +21,6 @@ const PeopleCard = () => {
 			<h1>PEOPLE</h1>
 			<div className="row flex-nowrap ">
 				{people.map(person => {
-					console.log(person);
 					return (
 						<div className="card col-3 m-4" key={person.uid}>
 							<img

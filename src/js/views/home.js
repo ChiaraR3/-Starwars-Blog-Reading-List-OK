@@ -5,7 +5,7 @@ import PlanetCard from "../component/PlanetCard.js";
 
 const Home = () => {
 	return (
-		<div className="container">
+		<div className="container one">
 			<PeopleCard />,<PlanetCard />
 		</div>
 	);
