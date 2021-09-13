@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 
 import "../../styles/demo.scss";
 
-export const Single = () => {
+const PeopleDetail = () => {
 	const { store, actions } = useContext(Context);
 	const [detail, setDetail] = useState([]);
 
@@ -19,13 +19,14 @@ export const Single = () => {
 	}, []);
 	return (
 		<div className="container">
-			<ul className="list-group planet">
+			<ul className="list-group">
 				<p> NAME: {detail.name}</p>
-				<p> POPULATION: {detail.population}</p>
-				<p> CLIMATE: {detail.climate}</p>
-				<p> DIAMETER: {detail.diameter}</p>
-				<p> TERRAIN: {detail.terrain}</p>
-				<p> SURFACE WATER: {detail.surface_water}</p>
+				<p> HEIGHT: {detail.height}</p>
+				<p> HAIR COLOR: {detail.hair_color}</p>
+				<p> SKIN COLOR: {detail.skin_color}</p>
+				<p> EYE COLOR: {detail.eye_color}</p>
+				<p> GENDER: {detail.gender}</p>
+				<p>BIRTH YEAR: {detail.birth_year}</p>
 			</ul>
 			<br />
 			<Link to="/">
@@ -40,3 +41,4 @@ export const Single = () => {
 		</div>
 	);
 };
+export default PeopleDetail;

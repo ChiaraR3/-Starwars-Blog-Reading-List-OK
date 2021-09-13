@@ -2,33 +2,33 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
-const PlanetCard = () => {
-	const [planets, setPlanets] = useState([]);
+const StarshipsCard = () => {
+	const [starships, setStarships] = useState([]);
 	const { store, actions } = useContext(Context);
 
-	async function getPlanet() {
-		const response = await fetch("https://www.swapi.tech/api/planets");
+	async function getStarships() {
+		const response = await fetch("https://www.swapi.tech/api/starships");
 
 		const responseJson = await response.json();
-		setPlanets(responseJson.results);
+		setStarships(responseJson.results);
 	}
 	useEffect(() => {
-		getPlanet();
+		getStarships();
 	}, []);
 
 	return (
 		<div className="container">
-			<h1>PLANETS</h1>
+			<h1>STARSHIPS</h1>
 			<div className="row flex-nowrap ">
-				{planets.map(planet => {
+				{starships.map(starship => {
 					return (
-						<div className="card col-3 m-4" key={planet.uid}>
+						<div className="card col-3 m-4" key={starship.uid}>
 							<img
 								className="card-img-top"
-								src="https://starwarsblog.starwars.com/wp-content/uploads/2018/10/mustafar-tall.jpg"
+								src="https://lumiere-a.akamaihd.net/v1/images/Star-Destroyer_ab6b94bb.jpeg?region=0%2C0%2C1600%2C900&width=960"
 								alt="Card image cap"
 							/>
-							<h5>{planet.name}</h5>
+							<h5>{starship.name}</h5>
 							<div className="card-body">
 								<p className="card-text">
 									This is a longer card with supporting text below as a natural lead-in to additional
@@ -37,14 +37,14 @@ const PlanetCard = () => {
 								<button
 									className="fas fa-heart"
 									onClick={() => {
-										actions.addFav(planet.name);
+										actions.addFav(starship.name);
 									}}
 								/>
-								<Link to="/PlanetDetail">
+								<Link to="/StarshipsDetail">
 									<button
 										className="details"
 										onClick={() => {
-											actions.addDetails(planet.url);
+											actions.addDetails(starship.url);
 										}}>
 										Details
 									</button>
@@ -57,4 +57,4 @@ const PlanetCard = () => {
 		</div>
 	);
 };
-export default PlanetCard;
+export default StarshipsCard;

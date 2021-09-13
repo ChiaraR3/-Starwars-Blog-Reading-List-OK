@@ -35,22 +35,20 @@ const PeopleCard = () => {
 									content. This content is a little bit longer.
 								</p>
 								<button
+									className="fas fa-heart"
 									onClick={() => {
 										actions.addFav(person.name);
-									}}>
-									FAV
-								</button>
-								<Link to="/demo">
+									}}
+								/>
+								<Link to="/PeopleDetail">
 									<button
+										className="details"
 										onClick={() => {
 											actions.addDetails(person.url);
 										}}>
-										MORE
+										Details
 									</button>
 								</Link>
-								<p className="card-text">
-									<small className="text-muted">Last updated 3 mins ago</small>
-								</p>
 							</div>
 						</div>
 					);
